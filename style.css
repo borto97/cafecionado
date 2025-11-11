@@ -91,18 +91,17 @@ ul{ margin:0; padding-left:1rem; }
 .hidden{ display:none !important; }
 
 /* =========================================
-   HEADER GLOBAL FIXO
+   HEADER GLOBAL FIXO (clean)
 ========================================= */
-
 :root{
-  --header-h: 80px;
-  --brand-size: 1.48rem;
-  --nav-size: 1.2rem;
+  --header-h: 72px;
+  --brand-size: 1.48rem;     /* tamanho do "Cafecionado" */
+  --nav-size: 1.12rem;        /* tamanho dos links */
   --header-bg-solid: rgba(20,15,12,.92);
   --header-bg-glass: rgba(20,15,12,.10);
 }
 
-/* dá espaço pro header fixo */
+/* espaço para o header fixo */
 body{ padding-top: var(--header-h); }
 
 .topbar{
@@ -123,7 +122,6 @@ body{ padding-top: var(--header-h); }
 
   transition: background .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
-
 .topbar .container{
   width: min(100% - 32px, var(--container, 1120px));
   margin-inline: auto;
@@ -133,29 +131,26 @@ body{ padding-top: var(--header-h); }
   padding: 0;
 }
 
-/* ===== BRAND ===== */
+/* Marca */
 .brand{
   display:flex;
   align-items:center;
   gap:10px;
   font-family:"Playfair Display", serif;
 }
-
 .brand strong{
   color:#fff;
   font-weight:700;
   font-size: var(--brand-size);
   line-height: 1;
 }
-
 .brand .muted{
   color: rgba(255,255,255,.65);
   font:600 1.12rem Inter, system-ui;
   padding-left:10px;
   border-left:1px solid rgba(255,255,255,.18);
 }
-
-/* Ícone = tamanho do texto + invertido */
+/* Ícone = altura do texto + invertido (branco) */
 .brand-icon{
   height: 2em;
   width: auto;
@@ -165,13 +160,12 @@ body{ padding-top: var(--header-h); }
   filter: invert(1) brightness(1.15) contrast(1.05);
 }
 
-/* ===== NAV ===== */
+/* Navegação */
 .nav{
   display:flex;
   gap:8px;
   align-items:center;
 }
-
 .nav a{
   font-size: var(--nav-size);
   color: rgba(255,255,255,.9);
@@ -179,25 +173,31 @@ body{ padding-top: var(--header-h); }
   border-radius:10px;
   transition: background .2s ease, color .2s ease;
 }
-
 .nav a:hover{
   background: rgba(255,255,255,.12);
   color:#fff;
 }
-
 .nav .btn.small{
   background: rgba(255,255,255,.14);
   border-color: rgba(255,255,255,.22);
   color:#fff;
 }
 
-/* ===== estado sobre o hero ===== */
+/* Sobre o hero (só na home) */
 .topbar.is-over-hero{
   background: var(--header-bg-glass);
   border-bottom-color: transparent;
   box-shadow: 0 8px 18px -16px rgba(0,0,0,.35);
 }
 
+/* Responsivo básico */
+@media (max-width:760px){
+  :root{
+    --brand-size: 1.22rem;
+    --nav-size: .94rem;
+    --header-h: 68px;
+  }
+}
 
 /* -----------------------------------------
    TÍTULOS
