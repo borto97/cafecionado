@@ -441,21 +441,65 @@ input[type="search"]:focus, select:focus{
 }
 
 /* -----------------------------------------
-   ABOUT / QUOTES (HOME)
+   ABOUT / QUOTES (HOME) — AJUSTADO
 ----------------------------------------- */
-.about{ display:grid; grid-template-columns: 1.1fr .9fr; gap:22px; align-items:center; }
-.about .about-media{ border-radius: var(--radius); overflow:hidden; box-shadow: var(--shadow-sm); }
-.about .about-text .list.icon{ list-style:none; padding-left:0; margin-top:.5rem; }
-.about .about-text .list.icon li{ padding:.35rem 0 .35rem 1.25rem; position:relative; border-bottom:1px dashed var(--line); }
-.about .about-text .list.icon li::before{
-  content:"•"; color: var(--accent); position:absolute; left:0; top:0;
-}
-@media (max-width:900px){ .about{ grid-template-columns: 1fr; } }
 
-/* quotes */
-.quote{ padding:18px 16px; background:#fff; border:1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
-.quote p{ font-size:1.02rem; }
-.quote footer{ margin-top:.6rem; color: var(--muted); }
+/* 🔧 Enxuga o respiro vertical só nesta seção */
+.section:has(.about){              /* Chrome/Edge/Safari modernos */
+  padding: 48px 0 56px;
+}
+/* fallback (se tiver id="#sobre" no HTML) */
+#sobre.section{ padding: 48px 0 56px; }
+
+.about{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap:18px;                       /* menos espaço interno */
+  align-items:stretch;            /* estica os blocos na mesma altura */
+}
+
+/* Bloco da mídia (card) */
+.about .about-media{
+  border-radius: var(--radius);
+  overflow:hidden;
+  box-shadow: var(--shadow);      /* sombra mais marcada */
+  background:#fff;                /* “cartão” branco por trás da foto */
+  width:100%;
+
+  /* dimensão previsível sem “estourar” o layout */
+  aspect-ratio: 4 / 3;           /* 16/9, 4/3… ajuste se quiser */
+  position:relative;
+}
+
+/* Imagem ocupa o bloco, sem distorcer */
+.about .about-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+
+/* Lista de bullets do texto */
+.about .about-text .list.icon{
+  list-style:none; padding-left:0; margin-top:.5rem;
+}
+.about .about-text .list.icon li{
+  padding:.35rem 0 .35rem 1.25rem;
+  position:relative;
+  border-bottom:1px dashed var(--line);
+}
+.about .about-text .list.icon li::before{
+  content:"•"; color: var(--accent);
+  position:absolute; left:0; top:0;
+}
+
+/* Responsivo */
+@media (max-width:900px){
+  .about{ grid-template-columns:1fr; gap:14px; }
+  .about .about-media{ aspect-ratio: 16 / 9; } /* fica mais “wide” no mobile */
+}
+
 
 /* -----------------------------------------
    FOOTER
