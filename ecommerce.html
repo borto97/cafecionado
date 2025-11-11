@@ -5,25 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cafecionado — Catálogo</title>
   <meta name="description" content="Catálogo de cafés especiais, acessórios e merch do Cafecionado." />
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- Favicons (claro/escuro) -->
+  <link rel="icon" href="img/coffee_icon.png"> <!-- fallback -->
+  <link rel="icon" href="img/coffee_icon_dark.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="img/coffee_icon_light.png" media="(prefers-color-scheme: dark)">
+  <link rel="apple-touch-icon" href="img/coffee_icon.png">
+
+  <!-- Cor da aba (mobile) -->
+  <meta name="theme-color" content="#1a120e">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS principal por último -->
+  <link rel="stylesheet" href="style.css?v=5" />
 </head>
+
 <body data-page="ecommerce">
 
   <!-- ===== TOPBAR ===== -->
   <header class="topbar">
     <div class="container flex between center">
       <a class="brand" href="index.html" aria-label="Início — Cafecionado">
-        <span class="dot" aria-hidden="true"></span>
+        <img src="img/coffee_icon.png" alt="" class="brand-icon">
         <strong>Cafecionado</strong>
         <span class="muted">catálogo</span>
       </a>
 
       <nav class="nav" aria-label="Navegação">
-        <a href="index.html">Início</a>
-        <a class="btn small" href="ecommerce.html">Catálogo</a>
+        <a href="index.html#clube">Social Club</a>
+        <a href="index.html#eventos">Eventos</a>
+        <a href="index.html#cursos">Cursos</a>
+        <a href="index.html#sobre">Sobre</a>
+        <a href="index.html#contato">Contato</a>
+        <a class="btn small" href="ecommerce.html" aria-label="Ir para o Catálogo">Catálogo</a>
       </nav>
     </div>
   </header>
@@ -60,7 +79,7 @@
     </div>
   </section>
 
-  <!-- ===== GRID / PRODUTOS (exemplos) ===== -->
+  <!-- ===== GRID / PRODUTOS ===== -->
   <main class="container">
     <div class="grid" id="grid">
       <article class="card" data-cat="cafes">
@@ -143,9 +162,6 @@
         </div>
       </article>
     </div>
-
-    <!-- Estado vazio (opcional) -->
-    <!-- <div class="empty">Nada encontrado. Tente outro filtro.</div> -->
   </main>
 
   <!-- ===== FOOTER ===== -->
@@ -155,6 +171,21 @@
     </div>
     <script>document.getElementById('ano').textContent = new Date().getFullYear();</script>
   </footer>
+
+  <!-- (Opcional) script da transparência do header na home; na loja não há .hero, então não faz nada -->
+  <script>
+  (function(){
+    const header = document.querySelector('.topbar');
+    const hero   = document.querySelector('.hero');
+    if(!header || !hero) return;
+    const headerH = parseInt(getComputedStyle(header).height) || 72;
+    const obs = new IntersectionObserver(([e]) => {
+      if(e.isIntersecting){ header.classList.add('is-over-hero'); }
+      else{ header.classList.remove('is-over-hero'); }
+    }, { rootMargin:`-${headerH}px 0px 0px 0px`, threshold:0 });
+    obs.observe(hero);
+  })();
+  </script>
 
 </body>
 </html>
