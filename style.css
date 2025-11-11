@@ -1,6 +1,6 @@
 /* =========================================
    Cafecionado — style.css (HOME + E-COMMERCE)
-   Páginas: home_page.html (data-page="home")
+   Páginas: index.html (data-page="home")
             ecommerce.html (data-page="ecommerce")
    Foco: estética premium, legibilidade e harmonia
 ========================================= */
@@ -49,6 +49,12 @@
 
   /* Hero overlay (0 = transparente, 1 = opaco) */
   --hero-overlay: .6;
+
+  /* Header fixo */
+  --header-h: 72px;
+  --header-bg-solid: rgba(20,15,12,0.92);   /* fora do hero */
+  --header-bg-glass: rgba(20,15,12,0.10);   /* sobre o hero */
+  --header-border: rgba(255,255,255,0.12);
 }
 
 /* -----------------------------------------
@@ -67,6 +73,9 @@ body{
   line-height:1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+
+  /* espaço para o header fixo */
+  padding-top: var(--header-h);
 }
 img{ max-width:100%; display:block; }
 a{ color:inherit; text-decoration:none; }
@@ -81,29 +90,36 @@ ul{ margin:0; padding-left:1rem; }
 .muted{ color: var(--muted); }
 .hidden{ display:none !important; }
 
-/* ===== HEADER GLOBAL FIXO ===== */
+/* =========================================
+   HEADER GLOBAL FIXO
+========================================= */
+
 :root{
-  --header-h: 72px;
-  --header-bg-solid: rgba(20,15,12,0.92);   /* fundo quando fora do hero */
-  --header-bg-glass: rgba(20,15,12,0.10);   /* fundo quando sobre o hero */
-  --header-border: rgba(255,255,255,0.12);
+  --header-h: 80px;
+  --brand-size: 1.48rem;
+  --nav-size: 1.2rem;
+  --header-bg-solid: rgba(20,15,12,.92);
+  --header-bg-glass: rgba(20,15,12,.10);
 }
 
-/* dá espaço no topo pro header FIXO não cobrir conteúdo */
+/* dá espaço pro header fixo */
 body{ padding-top: var(--header-h); }
 
 .topbar{
   position: fixed;
-  inset: 0 0 auto 0;        /* top:0; left:0; right:0 */
+  inset: 0 0 auto 0;
   height: var(--header-h);
-  z-index: 100;             /* acima do overlay do hero */
+  z-index: 100;
   display: flex;
   align-items: center;
 
   background: var(--header-bg-solid);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 12px 28px -18px rgba(0,0,0,0.45);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 12px 28px -18px rgba(0,0,0,.45);
   backdrop-filter: blur(10px);
+
+  font-size: var(--nav-size);
+  line-height: 1.1;
 
   transition: background .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
@@ -114,38 +130,74 @@ body{ padding-top: var(--header-h); }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0;               /* altura já controlada pela barra */
+  padding: 0;
 }
 
-/* marca e navegação em tom claro para header escuro */
-.brand{ display:flex; align-items:center; gap:10px; font-family:"Playfair Display", serif; }
-.brand strong{ color:#fff; font-weight:700; font-size:1.18rem; }
-.brand .muted{ color: rgba(255,255,255,.65); font:600 .92rem Inter; padding-left:10px; border-left:1px solid rgba(255,255,255,.18); }
+/* ===== BRAND ===== */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-family:"Playfair Display", serif;
+}
 
-.nav{ display:flex; gap:8px; align-items:center; }
+.brand strong{
+  color:#fff;
+  font-weight:700;
+  font-size: var(--brand-size);
+  line-height: 1;
+}
+
+.brand .muted{
+  color: rgba(255,255,255,.65);
+  font:600 1.12rem Inter, system-ui;
+  padding-left:10px;
+  border-left:1px solid rgba(255,255,255,.18);
+}
+
+/* Ícone = tamanho do texto + invertido */
+.brand-icon{
+  height: 2em;
+  width: auto;
+  display:inline-block;
+  object-fit: contain;
+  vertical-align: -.12em;
+  filter: invert(1) brightness(1.15) contrast(1.05);
+}
+
+/* ===== NAV ===== */
+.nav{
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
 .nav a{
+  font-size: var(--nav-size);
   color: rgba(255,255,255,.9);
   padding:.55rem .75rem;
   border-radius:10px;
   transition: background .2s ease, color .2s ease;
 }
-.nav a:hover{ background: rgba(255,255,255,.12); color:#fff; }
+
+.nav a:hover{
+  background: rgba(255,255,255,.12);
+  color:#fff;
+}
+
 .nav .btn.small{
   background: rgba(255,255,255,.14);
   border-color: rgba(255,255,255,.22);
   color:#fff;
 }
 
-/* ===== ESTADO: SOBRE O HERO (transparente) ===== */
+/* ===== estado sobre o hero ===== */
 .topbar.is-over-hero{
   background: var(--header-bg-glass);
   border-bottom-color: transparent;
-  box-shadow: 0 8px 18px -16px rgba(0,0,0,0.35);
+  box-shadow: 0 8px 18px -16px rgba(0,0,0,.35);
 }
 
-/* garanta que o overlay do hero não cubra o header */
-.hero .hero-overlay{ z-index: 1; }
-.topbar{ z-index: 100; }  /* mais alto que o overlay */
 
 /* -----------------------------------------
    TÍTULOS
@@ -170,9 +222,7 @@ h3{ font-size: var(--fs-3); }
 }
 .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow); }
 .btn:active{ transform: translateY(0); }
-.btn.ghost{
-  background:#fff; border-color: var(--line);
-}
+.btn.ghost{ background:#fff; border-color: var(--line); }
 .btn.primary{
   background: linear-gradient(180deg, var(--accent), var(--accent-700));
   color:#fff; border-color: color-mix(in oklab, var(--accent) 70%, #000 30%);
@@ -197,8 +247,7 @@ h3{ font-size: var(--fs-3); }
 .section-head p{ max-width:720px; color: var(--muted); }
 
 /* -----------------------------------------
-   HERO — BASE (estrutural, sem imagem)
-   (Não define background aqui para não afetar o e-commerce)
+   HERO — BASE (sem imagem)
 ----------------------------------------- */
 .hero{
   position: relative;
@@ -299,7 +348,10 @@ form.card input:focus, form.card select:focus, form.card textarea:focus{
    CATÁLOGO (ECOMMERCE)
 ----------------------------------------- */
 [data-page="ecommerce"] .filters{
-  position:sticky; top:72px; z-index:5; padding:16px 0 8px;
+  position:sticky;
+  top: var(--header-h);
+  z-index:5;
+  padding:16px 0 8px;
   background: linear-gradient(0deg, transparent, rgba(255,255,255,.6));
   backdrop-filter: blur(4px);
 }
@@ -329,19 +381,12 @@ input[type="search"]:focus, select:focus{
 }
 
 .grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap:18px; margin:12px 0 42px; }
-
-@media (max-width:1200px){
-  .grid{ grid-template-columns: repeat(8,1fr); }
-}
-
+@media (max-width:1200px){ .grid{ grid-template-columns: repeat(8,1fr); } }
 @media (max-width:800px){
   .grid{ grid-template-columns: repeat(6,1fr); }
   .filter-row{ grid-template-columns:1fr; }
 }
-
-@media (max-width:520px){
-  .grid{ grid-template-columns: repeat(4,1fr); }
-}
+@media (max-width:520px){ .grid{ grid-template-columns: repeat(4,1fr); } }
 
 /* Card do catálogo */
 .card{
