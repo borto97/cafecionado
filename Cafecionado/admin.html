@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Admin — cafecionado</title>
+
+<style>
+  body{
+    font-family: system-ui, sans-serif;
+    background: #faf7f3;
+    color: #2b1a17;
+    padding: 24px;
+  }
+  h1{
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+    margin-bottom: 16px;
+  }
+  form{
+    display: grid;
+    gap: 12px;
+    max-width: 440px;
+    margin-bottom: 32px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 10px 28px -10px rgba(0,0,0,0.15);
+    border: 1px solid #e6d5c3;
+  }
+  label{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: .95rem;
+    font-weight: 600;
+  }
+  input, textarea, select{
+    font-size: 1rem;
+    border: 1px solid #d7c6b4;
+    border-radius: 10px;
+    padding: 10px;
+    background: #fff;
+    outline: none;
+  }
+  input:focus, textarea:focus, select:focus{
+    border-color: #b08968;
+    box-shadow: 0 0 0 3px rgba(176,137,104,.25);
+  }
+  button{
+    background: #c97b36;
+    border: none;
+    color: #fff;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 6px 12px -4px rgba(0,0,0,.3);
+  }
+  button:hover{
+    background: #a76416;
+  }
+  .msg{
+    margin-top: 6px;
+    font-weight: 600;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>Admin — cafecionado</h1>
+<p>Use este painel para cadastrar novos produtos no catálogo.</p>
+
+<form onsubmit="event.preventDefault(); uploadProduct();">
+  
+  <label>
+    Nome do produto
+    <input id="name" placeholder="Ex.: Etiópia Yirgacheffe" required />
+  </label>
+
+  <label>
+    Preço (BRL)
+    <input id="price" placeholder="Ex.: 49,90" required />
+  </label>
+
+  <label>
+    Categoria
+    <select id="category">
+      <option value="Cafés de Origem">Cafés de Origem</option>
+      <option value="Blends">Blends</option>
+      <option value="Métodos">Métodos</option>
+      <option value="Acessórios">Acessórios</option>
+      <option value="Outros">Outros</option>
+    </select>
+  </label>
+
+  <label>
+    SKU
+    <input id="sku" placeholder="Ex.: CAF-001" required />
+  </label>
+
+  <label>
+    Descrição
+    <textarea id="description" rows="4" placeholder="Notas sensoriais, torra, origem…" required></textarea>
+  </label>
+
+  <label>
+    Imagem
+    <input id="image" type="file" accept="image/*" />
+  </label>
+
+  <button type="submit">Salvar Produto</button>
+
+  <div id="msg" class="msg"></div>
+</form>
+
+<script>
+const SHEETS_API_URL = "https://script.google.com/macros/s/AKfycbz0eKsGj4z0lY6avhCSi0ZyysSUANFy7wrxwPcSUH6xJfdIuX4Ywn35Eqac-Tnh82FkUA/exec";
+
+function fileToBase64(file){
+  return new Promise((resolve,reject)=>{
+    const r = new FileReader();
+    r.onload = ()=> {
+      const s = String(r.result);
+      resolve({
+        b64: s.slice(s.indexOf(",")+1),
+        mime: file.type || "application/octet-stream",
+        name: file.name || "upload"
+      });
+    };
+    r.onerror = reject;
+    r.readAsDataURL(file);
+  });
+}
+
+async function uploadProduct(){
+  const msg = document.getElementById("msg");
+  msg.textContent = "Enviando...";
+  msg.style.color = "black";
+
+  const fd = new FormData();
+  fd.append("name",        document.getElementById("name").value.trim());
+  fd.append("price",       document.getElementById("price").value.trim());
+  fd.append("category",    document.getElementById("category").value.trim());
+  fd.append("sku",         document.getElementById("sku").value.trim());
+  fd.append("description", document.getElementById("description").value.trim());
+
+  const f = document.getElementById("image").files[0];
+  if (f) {
+    const { b64, mime, name } = await fileToBase64(f);
+    fd.append("file_b64",  b64);
+    fd.append("file_type", mime);
+    fd.append("file_name", name);
+  }
+
+  try{
+    const resp = await fetch(SHEETS_API_URL, { method:"POST", body: fd });
+    const text = await resp.text();
+    let data; try{ data = JSON.parse(text); } catch { data = { ok:false, error:text }; }
+
+    if(data.ok){
+      msg.textContent = `✅ Produto registrado (${data.mode})`;
+      msg.style.color = "green";
+    } else {
+      msg.textContent = `❌ Erro: ${data.error || "Falha no envio"}`;
+      msg.style.color = "red";
+    }
+
+    console.log("server:", data);
+
+  }catch(e){
+    msg.textContent = "❌ Erro de conexão";
+    msg.style.color = "red";
+    console.error(e);
+  }
+}
+</script>
+
+</body>
+</html>

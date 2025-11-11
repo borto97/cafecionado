@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cafecionado — Catálogo</title>
+  <meta name="description" content="Catálogo de cafés especiais, acessórios e merch do Cafecionado." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body data-page="ecommerce">
+
+  <!-- ===== TOPBAR ===== -->
+  <header class="topbar">
+    <div class="container flex between center">
+      <a class="brand" href="home_page.html" aria-label="Início — Cafecionado">
+        <span class="dot" aria-hidden="true"></span>
+        <strong>Cafecionado</strong>
+        <span class="muted">catálogo</span>
+      </a>
+
+      <nav class="nav" aria-label="Navegação">
+        <a href="home_page.html">Início</a>
+        <a class="btn small" href="ecommerce.html">Catálogo</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== FILTROS ===== -->
+  <section class="container">
+    <div class="filters">
+      <div class="chips" aria-label="Categorias">
+        <button class="chip active" type="button">Todos</button>
+        <button class="chip" type="button">Torra clara</button>
+        <button class="chip" type="button">Torra média</button>
+        <button class="chip" type="button">Torra escura</button>
+        <button class="chip" type="button">Em grãos</button>
+        <button class="chip" type="button">Moído</button>
+        <button class="chip" type="button">Acessórios</button>
+        <button class="chip" type="button">Merch</button>
+      </div>
+
+      <div class="filter-row">
+        <input id="q" type="search" placeholder="Buscar por nome, notas ou origem..." aria-label="Buscar produtos" />
+        <select id="cat" aria-label="Filtrar categoria">
+          <option value="">Todas as categorias</option>
+          <option value="cafes">Cafés</option>
+          <option value="acessorios">Acessórios</option>
+          <option value="merch">Merch</option>
+        </select>
+        <select id="ord" aria-label="Ordenar">
+          <option value="relevancia">Ordenar por: Relevância</option>
+          <option value="preco-asc">Preço: menor → maior</option>
+          <option value="preco-desc">Preço: maior → menor</option>
+          <option value="novidades">Novidades</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GRID / PRODUTOS (exemplos) ===== -->
+  <main class="container">
+    <div class="grid" id="grid">
+      <article class="card" data-cat="cafes">
+        <div class="thumb">
+          <img src="img/cafe-01.jpg" alt="Serra do Caparaó — 250g" loading="lazy">
+          <span class="badge in">Em estoque</span>
+        </div>
+        <div class="content">
+          <h3>Serra do Caparaó</h3>
+          <p>Notas de cítricos, caramelo e mel. Torra clara.</p>
+          <div class="meta">
+            <span class="price">R$ 42,90</span>
+            <span class="muted small">250g</span>
+          </div>
+          <a class="cta" href="#" aria-label="Comprar Serra do Caparaó">Comprar</a>
+        </div>
+      </article>
+
+      <article class="card" data-cat="cafes">
+        <div class="thumb">
+          <img src="img/cafe-02.jpg" alt="Cerrado Mineiro — 250g" loading="lazy">
+          <span class="badge in">Best-seller</span>
+        </div>
+        <div class="content">
+          <h3>Cerrado Mineiro</h3>
+          <p>Chocolate e avelã, doçura equilibrada. Torra média.</p>
+          <div class="meta">
+            <span class="price">R$ 44,90</span>
+            <span class="muted small">250g</span>
+          </div>
+          <a class="cta" href="#" aria-label="Comprar Cerrado Mineiro">Comprar</a>
+        </div>
+      </article>
+
+      <article class="card" data-cat="cafes">
+        <div class="thumb">
+          <img src="img/cafe-03.jpg" alt="Sul de Minas — 250g" loading="lazy">
+          <span class="badge pre">Novo</span>
+        </div>
+        <div class="content">
+          <h3>Sul de Minas</h3>
+          <p>Frutas vermelhas, floral e acidez brilhante. Torra média.</p>
+          <div class="meta">
+            <span class="price">R$ 46,90</span>
+            <span class="muted small">250g</span>
+          </div>
+          <a class="cta" href="#" aria-label="Comprar Sul de Minas">Comprar</a>
+        </div>
+      </article>
+
+      <article class="card" data-cat="acessorios">
+        <div class="thumb">
+          <img src="img/moedor.jpg" alt="Moedor manual" loading="lazy">
+          <span class="badge in">Em estoque</span>
+        </div>
+        <div class="content">
+          <h3>Moedor Manual</h3>
+          <p>Mós cônicas de aço. Ajuste fino para espresso e filtrados.</p>
+          <div class="meta">
+            <span class="price">R$ 199,00</span>
+            <span class="muted small">1 unidade</span>
+          </div>
+          <a class="cta" href="#" aria-label="Comprar Moedor Manual">Comprar</a>
+        </div>
+      </article>
+
+      <article class="card" data-cat="merch">
+        <div class="thumb">
+          <img src="img/camiseta.jpg" alt="Camiseta Cafecionado" loading="lazy">
+          <span class="badge in">Novidade</span>
+        </div>
+        <div class="content">
+          <h3>Camiseta Cafecionado</h3>
+          <p>Algodão premium, modelagem unissex.</p>
+          <div class="meta">
+            <span class="price">R$ 89,00</span>
+            <span class="muted small">P • M • G • GG</span>
+          </div>
+          <a class="cta" href="#" aria-label="Comprar Camiseta">Comprar</a>
+        </div>
+      </article>
+    </div>
+
+    <!-- Estado vazio (opcional) -->
+    <!-- <div class="empty">Nada encontrado. Tente outro filtro.</div> -->
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p class="small">© <span id="ano"></span> Cafecionado. Todos os direitos reservados.</p>
+    </div>
+    <script>document.getElementById('ano').textContent = new Date().getFullYear();</script>
+  </footer>
+
+</body>
+</html>

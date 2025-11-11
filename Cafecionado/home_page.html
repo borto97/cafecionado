@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cafecionado — Cafés especiais, Social Club e experiências</title>
+  <meta name="description" content="Cafecionado: cafés especiais torrados na hora, Social Club com degustações, eventos e cursos. Assine a newsletter e participe." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body data-page="home">
+
+  <!-- ===== TOPBAR ===== -->
+  <header class="topbar">
+    <div class="container flex between center">
+      <a class="brand" href="home_page.html" aria-label="Cafecionado — Página inicial">
+        <span class="dot" aria-hidden="true"></span>
+        <strong>Cafecionado</strong>
+        <span class="muted">cafés & clube</span>
+      </a>
+
+      <nav class="nav" aria-label="Principal">
+        <a href="#clube">Social Club</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#cursos">Cursos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+        <a class="btn small" href="ecommerce.html" aria-label="Ir para a Loja">Loja</a>
+      </nav>
+    </div>
+  </header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" role="banner" aria-label="Destaque">
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <h1>O café que você sente no primeiro gole.</h1>
+    <p class="lead">Microlotes selecionados, torra fresca e experiências presenciais no nosso Social Club.</p>
+
+    <div class="hero-actions">
+      <a class="btn" href="#clube">Entrar no Social Club</a>
+      <a class="btn ghost" href="#eventos">Ver próximos eventos</a>
+    </div>
+
+    <div class="hero-badges" aria-label="Benefícios">
+      <span class="pill">Degustações mensais</span>
+      <span class="pill">Workshops & cursos</span>
+      <span class="pill">Vantagens exclusivas</span>
+    </div>
+  </div>
+</section>
+
+  <!-- ===== SOCIAL CLUB ===== -->
+  <section id="clube" class="section section-alt" aria-labelledby="titulo-clube">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="titulo-clube">Cafecionado Social Club</h2>
+        <p>Uma comunidade de apreciadores com degustações guiadas, eventos privados, cursos e benefícios na casa.</p>
+      </div>
+
+      <!-- 3 benefícios -->
+      <div class="grid cards-3" style="margin-bottom:16px;">
+        <article class="card">
+          <div class="card-body" style="padding:16px;">
+            <h3>Degustações & cuppings</h3>
+            <p class="note">Sessões mensais com microlotes e convidados da cadeia do café.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body" style="padding:16px;">
+            <h3>Eventos & social</h3>
+            <p class="note">Lançamentos, encontros, música ao vivo curada e networking.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body" style="padding:16px;">
+            <h3>Cursos & workshops</h3>
+            <p class="note">Extração, torra, latte art e trilhas para iniciantes e avançados.</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Formulário Social Club -->
+      <form class="card" style="padding:18px;" action="#" method="post" aria-labelledby="form-clube">
+        <h3 id="form-clube" style="margin:0 0 6px;">Quero participar do Social Club</h3>
+        <p class="note" style="margin-top:0;">Preencha para receber convite e vantagens do clube.</p>
+
+        <div class="grid" style="grid-template-columns: repeat(12,1fr); gap:12px; margin:10px 0 0;">
+          <div style="grid-column: span 6;">
+            <label class="small" for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" required placeholder="Seu nome"
+                   style="width:100%;padding:.85rem .95rem;border:1px solid var(--border);border-radius:12px;background:#fff;">
+          </div>
+          <div style="grid-column: span 6;">
+            <label class="small" for="sobrenome">Sobrenome</label>
+            <input id="sobrenome" name="sobrenome" type="text" required placeholder="Seu sobrenome"
+                   style="width:100%;padding:.85rem .95rem;border:1px solid var(--border);border-radius:12px;background:#fff;">
+          </div>
+          <div style="grid-column: span 6;">
+            <label class="small" for="email">E-mail</label>
+            <input id="email" name="email" type="email" required placeholder="seu@email.com"
+                   style="width:100%;padding:.85rem .95rem;border:1px solid var(--border);border-radius:12px;background:#fff;">
+          </div>
+          <div style="grid-column: span 6;">
+            <label class="small" for="whats">WhatsApp</label>
+            <input id="whats" name="whats" type="tel" inputmode="tel" placeholder="(51) 9 0000-0000"
+                   style="width:100%;padding:.85rem .95rem;border:1px solid var(--border);border-radius:12px;background:#fff;">
+          </div>
+
+          <div style="grid-column: span 6;">
+            <label class="small" for="plano">Plano de interesse</label>
+            <select id="plano" name="plano" required
+                    style="width:100%;padding:.85rem .95rem;border:1px solid var(--border);border-radius:12px;background:#fff;">
+              <option value="">Selecione…</option>
+              <option>Essencial — 1 encontro/mês</option>
+              <option>Barista — 2 encontros/mês</option>
+              <option>Master — acesso completo</option>
+            </select>
+          </div>
+
+          <fieldset style="grid-column: span 6; border:1px dashed var(--border); border-radius:12px; padding:10px 12px;">
+            <legend class="small" style="padding:0 6px;">Interesses</legend>
+            <div class="flex" style="flex-wrap:wrap; gap:10px;">
+              <label><input type="checkbox" name="int" value="degustacoes"> Degustações</label>
+              <label><input type="checkbox" name="int" value="workshops"> Workshops</label>
+              <label><input type="checkbox" name="int" value="torrefacao"> Torrefação</label>
+              <label><input type="checkbox" name="int" value="merch"> Vantagens em merch/roupas</label>
+            </div>
+          </fieldset>
+
+          <div style="grid-column: span 12;">
+            <label class="small" for="msg">Mensagem (opcional)</label>
+            <textarea id="msg" name="mensagem" rows="3" placeholder="Conte como você curte café e o que espera do clube."
+                      style="width:100%;padding:.85rem .95rem;border:1px solid var(--border);border-radius:12px;background:#fff;"></textarea>
+          </div>
+
+          <div class="small" style="grid-column: span 12;">
+            <label>
+              <input type="checkbox" required> Autorizo o contato por e-mail/WhatsApp e aceito receber convites do Social Club.
+            </label>
+          </div>
+
+          <div style="grid-column: span 12; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn" type="submit">Quero meu convite</button>
+            <a class="btn btn-wa" href="https://wa.me/5500000000000" target="_blank" rel="noopener">Falar no WhatsApp</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== EVENTOS ===== -->
+  <section id="eventos" class="section" aria-labelledby="titulo-eventos">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="titulo-eventos">Próximos eventos</h2>
+        <p>Agenda viva com degustações, encontros e lançamentos.</p>
+      </div>
+
+      <div class="grid cards-3">
+        <article class="card">
+          <div class="card-body" style="padding:16px;">
+            <h3>Cupping Microlotes — Novembro</h3>
+            <p class="note">Linha especial: Caparaó & Cerrado. 20 vagas.</p>
+            <div class="actions" style="display:flex; gap:.6rem; margin-top:10px;">
+              <a class="btn" href="#clube">Garantir vaga</a>
+              <a class="btn ghost" href="#">Detalhes</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body" style="padding:16px;">
+            <h3>Live Session & Brewing Night</h3>
+            <p class="note">Set ao vivo, métodos filtrados e harmonizações.</p>
+            <div class="actions" style="display:flex; gap:.6rem; margin-top:10px;">
+              <a class="btn" href="#clube">Lista de presença</a>
+              <a class="btn ghost" href="#">Ver programação</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body" style="padding:16px;">
+            <h3>Roasting Talk</h3>
+            <p class="note">Bate-papo com mestre de torra convidado.</p>
+            <div class="actions" style="display:flex; gap:.6rem; margin-top:10px;">
+              <a class="btn" href="#clube">Participar</a>
+              <a class="btn ghost" href="#">Detalhes</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CURSOS ===== -->
+  <section id="cursos" class="section section-alt" aria-labelledby="titulo-cursos">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="titulo-cursos">Cursos & Workshops</h2>
+        <p>Conteúdos práticos, turmas pequenas e certificação Cafecionado.</p>
+      </div>
+
+      <div class="grid cards-3">
+        <article class="card">
+          <div class="card-body" style="padding:16px;">
+            <h3>Introdução à Extração</h3>
+            <p class="note">Moagem, proporção e temperatura para cada método.</p>
+            <div class="actions" style="display:flex; gap:.6rem; margin-top:10px;">
+              <a class="btn" href="#clube">Inscrever</a>
+              <a class="btn ghost" href="#">Programa</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body" style="padding:16px;">
+            <h3>Latte Art Essencial</h3>
+            <p class="note">Leite, microespuma e padrões clássicos.</p>
+            <div class="actions" style="display:flex; gap:.6rem; margin-top:10px;">
+              <a class="btn" href="#clube">Inscrever</a>
+              <a class="btn ghost" href="#">Programa</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body" style="padding:16px;">
+            <h3>Do grão à xícara</h3>
+            <p class="note">Origem, processamento, torra e perfil sensorial.</p>
+            <div class="actions" style="display:flex; gap:.6rem; margin-top:10px;">
+              <a class="btn" href="#clube">Inscrever</a>
+              <a class="btn ghost" href="#">Programa</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOBRE ===== -->
+  <section id="sobre" class="section">
+    <div class="container about">
+      <div class="about-media">
+        <img src="img/torrador.jpg" alt="Torrefação artesanal do Cafecionado" loading="lazy">
+      </div>
+      <div class="about-text">
+        <h2>Da origem à sua xícara</h2>
+        <p>Trabalhamos com produtores que respeitam a terra e valorizam o grão. Torramos em pequenos lotes, destacando o que cada safra tem de melhor. Você sente a diferença.</p>
+        <ul class="list icon">
+          <li>Rastreabilidade total</li>
+          <li>Torra fresca semanal</li>
+          <li>Embalagens com válvula unidirecional</li>
+        </ul>
+        <a class="btn ghost" href="#clube">Fale com a gente</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DEPOIMENTOS ===== -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>Quem provou, aprovou</h2>
+        <p>Clientes e baristas falando sobre a experiência Cafecionado.</p>
+      </div>
+      <div class="grid cards-3">
+        <blockquote class="card quote" style="padding:16px;">
+          <p>“Creme perfeito na espresso e doçura natural. Virou padrão na minha cafeteria.”</p>
+          <footer>— Laura, barista</footer>
+        </blockquote>
+        <blockquote class="card quote" style="padding:16px;">
+          <p>“Entrega sempre fresca. O Cerrado Mineiro virou meu café de todo dia.”</p>
+          <footer>— Renan, cliente</footer>
+        </blockquote>
+        <blockquote class="card quote" style="padding:16px;">
+          <p>“Clube com curadoria de verdade. Os eventos valem muito a pena.”</p>
+          <footer>— Paula, assinante</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEWSLETTER ===== -->
+  <section class="section newsletter">
+    <div class="container news-wrap">
+      <div>
+        <h2>Receba novidades e ofertas</h2>
+        <p class="note">Sem spam. Só café bom e conteúdo útil.</p>
+      </div>
+      <form class="news-form" action="#" method="post">
+        <label class="sr-only" for="email_news">Seu e-mail</label>
+        <input id="email_news" name="email" type="email" placeholder="Seu e-mail" required>
+        <button class="btn" type="submit">Assinar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="contato" class="footer">
+    <div class="container">
+      <p class="small">© <span id="year"></span> Cafecionado. Todos os direitos reservados.</p>
+    </div>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </footer>
+
+</body>
+</html>

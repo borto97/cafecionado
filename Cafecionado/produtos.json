@@ -1,0 +1,56 @@
+[
+  {
+    "status": "disponivel",
+    "categoria": "Cafés de Origem",
+    "nome": "Etiópia Yirgacheffe",
+    "preco": "R$ 49,90",
+    "descricao": "Grãos 100% arábica. Notas florais, frutas amarelas e finalização cítrica. Torra média.",
+    "imagem": "img/etiopia-yirgacheffe.jpg",
+    "sku": "CAF-001"
+  },
+  {
+    "status": "encomenda",
+    "categoria": "Cafés de Origem",
+    "nome": "Colômbia Huila",
+    "preco": "R$ 44,90",
+    "descricao": "Equilibrado e doce. Notas de caramelo, cacau e frutas vermelhas. Torra média.",
+    "imagem": "img/colombia-huila.jpg",
+    "sku": "CAF-002"
+  },
+  {
+    "status": "disponivel",
+    "categoria": "Blends",
+    "nome": "Blend Casa — Espresso",
+    "preco": "R$ 39,90",
+    "descricao": "Blend exclusivo com torra média-escura. Corpo aveludado, notas de nozes, chocolate amargo e caramelo.",
+    "imagem": "img/blend-casa-espresso.jpg",
+    "sku": "BLD-010"
+  },
+  {
+    "status": "disponivel",
+    "categoria": "Métodos",
+    "nome": "Filtro Hario V60 — 02",
+    "preco": "R$ 32,90",
+    "descricao": "Filtro de papel para Hario V60 tamanho 02. Realça acidez e clareza em cafés filtrados.",
+    "imagem": "img/hario-v60-filter.jpg",
+    "sku": "MET-001"
+  },
+  {
+    "status": "encomenda",
+    "categoria": "Acessórios",
+    "nome": "Moedor Manual — Ceramic Burr",
+    "preco": "R$ 139,90",
+    "descricao": "Moedor com lâminas de cerâmica para moagem uniforme. Ajuste para espresso, coado ou prensa.",
+    "imagem": "img/moedor-manual.jpg",
+    "sku": "ACS-021"
+  },
+  {
+    "status": "disponivel",
+    "categoria": "Acessórios",
+    "nome": "Prensa Francesa 600ml",
+    "preco": "R$ 119,90",
+    "descricao": "Perfeita para extração encorpada. Corpo de vidro resistente, aço inoxidável e design minimalista.",
+    "imagem": "img/prensa-francesa.jpg",
+    "sku": "ACS-024"
+  }
+]
